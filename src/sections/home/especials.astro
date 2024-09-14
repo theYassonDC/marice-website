@@ -1,0 +1,33 @@
+---
+import CardIcon from "../../components/svg/CardIcon.astro";
+import DesktopIcon from "../../components/svg/DesktopIcon.astro";
+import KeyIcon from '../../components/svg/KeyIcon.astro'
+import PersonIcon from '../../components/svg/PersonIcon.astro'
+---
+
+<section class="flex flex-row flex-wrap gap-2 p-5 items-center justify-center">
+  <a href="#">
+    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+      <DesktopIcon />
+      <p class="text-lg font-semibold p-3 text-white">Sistemas</p>
+    </div>
+  </a>
+  <a href="#">
+    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+      <CardIcon />
+      <p class="text-lg font-semibold p-3 text-white">Electronica</p>
+    </div>
+  </a>
+  <a href="#">
+    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+      <KeyIcon />
+      <p class="text-lg font-semibold p-3 text-white">Mecanica</p>
+    </div>
+  </a>
+  <a href="#">
+    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+      <PersonIcon />
+      <p class="text-lg font-semibold p-3 text-white">Metalisteria</p>
+    </div>
+  </a>
+</section>

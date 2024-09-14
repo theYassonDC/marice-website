@@ -1,0 +1,28 @@
+---
+import TopIcon from "../svg/TopIcon.astro";
+---
+
+<a
+  class="hidden fixed z-50 bottom-10 right-10 border-0 w-14 h-14 rounded-full shadow-md bg-[#2d70ff] hover:bg-[#235edd] text-white text-lg font-semibold transition-colors duration-300"
+  id="to-top-button"
+  href="#inicio"
+  title="Volver al inicio"
+>
+  <TopIcon />
+</a>
+<script>
+	var toTopButton = document.getElementById("to-top-button");
+
+	if (toTopButton) {
+		window.onscroll = function () {
+			if (
+				document.body.scrollTop > 500 ||
+				document.documentElement.scrollTop > 500
+			) {
+				toTopButton!.classList.remove("hidden");
+			} else {
+				toTopButton!.classList.add("hidden");
+			}
+		};
+	}
+</script>
