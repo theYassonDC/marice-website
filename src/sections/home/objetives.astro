@@ -15,6 +15,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </p>
   <article
     class="flex gap-4 items-center w-1/2 bg-[#235edd] text-white p-4 border-2 border-solid border-[#1b52c7] rounded-lg"
+    id="anim-article"
   >
     <PeoplesIcon />
     <p class="text-lg">
@@ -26,6 +27,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </article>
   <article
     class="flex gap-3 items-center w-1/2 bg-[#235edd] text-white p-3 border-2 border-solid border-[#1b52c7] rounded-lg"
+    id="anim-article2"
   >
     <IdentityIcon />
     <p class="text-lg">
@@ -35,6 +37,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </article>
   <article
     class="flex gap-3 items-center w-1/2 bg-[#235edd] text-white p-3 border-2 border-solid border-[#1b52c7] rounded-lg"
+    id="anim-article"
   >
     <HospitalIcon />
     <p class="text-lg">
@@ -43,6 +46,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </article>
   <article
     class="flex gap-3 items-center w-1/2 bg-[#235edd] text-white p-3 border-2 border-solid border-[#1b52c7] rounded-lg"
+    id="anim-article"
   >
     <ChatIcon />
     <p class="text-lg">
@@ -52,3 +56,43 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
     </p>
   </article>
 </article>
+<style>
+  article > h1 {
+    animation: revealing;
+    animation-duration: 200ms;
+  }
+  .animate_cards2 {
+    animation: revealing_info_cards;
+    animation-duration: 1s;
+  }
+  @keyframes revealing_info_cards {
+    0% {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    // Recorrer las entradas recibidas
+    entries.forEach((entry) => {
+      // Está visible en el viewport
+      if (entry.intersectionRatio > 0) {
+        // entry.target es el elemento que se está observando
+        // Agregar la clase para animar
+        entry.target.classList.add("animate_cards2");
+        // Dejar de observar
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  // Observar elemento a animar
+  const element = document.getElementById("anim-article")
+  observer.observe(element as HTMLElement);
+  const element2 = document.getElementById("anim-article2")
+  observer.observe(element2 as HTMLElement);
+</script>

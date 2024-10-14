@@ -1,6 +1,6 @@
 <section id="simbols">
   <h1 class="text-3xl text-center font-bold p-5 text-slate-900">Simbolos</h1>
-  <article class="flex flex-wrap gap-2 items-center justify-center">
+  <article class="flex flex-wrap gap-2 items-center justify-center" id="simbols-section">
     <div class="flex flex-col gap-1 bg-[#235edd] p-5 rounded-lg items-center">
       <img
         src="https://3.bp.blogspot.com/-ihCERkP2E9M/UJ_K9YxwpcI/AAAAAAAAAjc/t_oMJ7JuT1Q/s1600/ESCUDO%252BMARICE%252BSINISTERRA%25281%2529.png"
@@ -41,3 +41,41 @@
     </div>
   </article>
 </section>
+<style>
+  section > h1 {
+    animation: revealing;
+    animation-duration: 200ms;
+  }
+  .animate_cards {
+    animation: revealing_cards;
+    animation-duration: 1s;
+  }
+  @keyframes revealing_cards {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    // Recorrer las entradas recibidas
+    entries.forEach((entry) => {
+      // Está visible en el viewport
+      if (entry.intersectionRatio > 0) {
+        // entry.target es el elemento que se está observando
+        // Agregar la clase para animar
+        entry.target.classList.add("animate_cards");
+        // Dejar de observar
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  // Observar elemento a animar
+  const element = document.getElementById("simbols-section")
+  observer.observe(element as HTMLElement);
+</script>

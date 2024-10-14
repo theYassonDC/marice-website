@@ -1,4 +1,4 @@
-<section class="flex pl-14 pr-14">
+<section class="flex pl-14 pr-14" id="history-section">
   <p class="clear-none text-xl">
     Es una entidad educativa oficial, creada en el año 1972 por la empresa
     Motovalle y por este motivo se la denominó inicialmente Escuela Motovalle.
@@ -29,3 +29,37 @@
     trabajo en equipo y la proyección social.
   </p>
 </section>
+<style>
+  .animate_history {
+    animation: revealing;
+    animation-duration: 1s;
+  }
+  @keyframes revealing {
+    0% {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    // Recorrer las entradas recibidas
+    entries.forEach((entry) => {
+      // Está visible en el viewport
+      if (entry.intersectionRatio > 0) {
+        // entry.target es el elemento que se está observando
+        // Agregar la clase para animar
+        entry.target.classList.add("animate_history");
+        // Dejar de observar
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  // Observar elemento a animar
+  const element = document.getElementById("history-section")
+  observer.observe(element as HTMLElement);
+</script>
