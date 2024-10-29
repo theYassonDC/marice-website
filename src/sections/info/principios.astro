@@ -42,3 +42,37 @@ import Title from "../../components/Utils/Title.astro";
     relevantes de sus comunidades.
   </p>
 </section>
+<style>
+  .animate_cards3 {
+    animation: revealing_info_cards;
+    animation-duration: 1s;
+  }
+  @keyframes revealing_info_cards {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 100%, 100%);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    // Recorrer las entradas recibidas
+    entries.forEach((entry) => {
+      // Está visible en el viewport
+      if (entry.intersectionRatio > 0) {
+        // entry.target es el elemento que se está observando
+        // Agregar la clase para animar
+        entry.target.classList.add("animate_cards3");
+        // Dejar de observar
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  // Observar elemento a animar
+  const element = document.getElementById("principios")
+  observer.observe(element as HTMLElement);
+</script>

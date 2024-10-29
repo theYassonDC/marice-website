@@ -1,33 +1,99 @@
 ---
 import CardIcon from "../../components/svg/CardIcon.astro";
 import DesktopIcon from "../../components/svg/DesktopIcon.astro";
-import KeyIcon from '../../components/svg/KeyIcon.astro'
-import PersonIcon from '../../components/svg/PersonIcon.astro'
+import KeyIcon from "../../components/svg/KeyIcon.astro";
+import PersonIcon from "../../components/svg/PersonIcon.astro";
 ---
 
 <section class="flex flex-row flex-wrap gap-2 p-5 items-center justify-center">
-  <a href="#">
-    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+  <a href="#" id="sistemas">
+    <div
+      class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg"
+    >
       <DesktopIcon />
       <p class="text-lg font-semibold p-3 text-white">Sistemas</p>
     </div>
   </a>
-  <a href="#">
-    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+  <a href="#" id="electronica">
+    <div
+      class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg"
+    >
       <CardIcon />
       <p class="text-lg font-semibold p-3 text-white">Electronica</p>
     </div>
   </a>
-  <a href="#">
-    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+  <a href="#" id="mecanica">
+    <div
+      class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg"
+    >
       <KeyIcon />
       <p class="text-lg font-semibold p-3 text-white">Mecanica</p>
     </div>
   </a>
-  <a href="#">
-    <div class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg">
+  <a href="#" id="metalisteria">
+    <div
+      class="flex flex-col items-center bg-[#2d70ff] border-2 border-solid border-[#1b52c7] hover:border-none rounded-lg"
+    >
       <PersonIcon />
       <p class="text-lg font-semibold p-3 text-white">Metalisteria</p>
     </div>
   </a>
 </section>
+<style>
+  .scale-in-center {
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  @-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    // Recorrer las entradas recibidas
+    entries.forEach((entry) => {
+      // Está visible en el viewport
+      if (entry.intersectionRatio > 0) {
+        // entry.target es el elemento que se está observando
+        // Agregar la clase para animar
+        entry.target.classList.add("scale-in-center");
+        // Dejar de observar
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  // Observar elemento a animar
+  const element = document.getElementById("sistemas");
+  observer.observe(element as HTMLElement);
+
+  const element2 = document.getElementById("electronica");
+  observer.observe(element2 as HTMLElement);
+
+  const element3 = document.getElementById("mecanica");
+  observer.observe(element3 as HTMLElement);
+
+  const element4 = document.getElementById("metalisteria");
+  observer.observe(element4 as HTMLElement);
+</script>

@@ -37,7 +37,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </article>
   <article
     class="flex gap-3 items-center w-1/2 bg-[#235edd] text-white p-3 border-2 border-solid border-[#1b52c7] rounded-lg"
-    id="anim-article"
+    id="anim-article3"
   >
     <HospitalIcon />
     <p class="text-lg">
@@ -46,7 +46,7 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
   </article>
   <article
     class="flex gap-3 items-center w-1/2 bg-[#235edd] text-white p-3 border-2 border-solid border-[#1b52c7] rounded-lg"
-    id="anim-article"
+    id="anim-article4"
   >
     <ChatIcon />
     <p class="text-lg">
@@ -61,18 +61,33 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
     animation: revealing;
     animation-duration: 200ms;
   }
-  .animate_cards2 {
-    animation: revealing_info_cards;
-    animation-duration: 1s;
+  .slide-in-left {
+    -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
-  @keyframes revealing_info_cards {
+  @-webkit-keyframes slide-in-left {
     0% {
+      -webkit-transform: translateX(-1000px);
+      transform: translateX(-1000px);
       opacity: 0;
-      transform: translate3d(-100%, 0, 0);
     }
     100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
       opacity: 1;
-      transform: none;
+    }
+  }
+  @keyframes slide-in-left {
+    0% {
+      -webkit-transform: translateX(-1000px);
+      transform: translateX(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 </style>
@@ -84,15 +99,22 @@ import ChatIcon from "../../components/svg/ChatIcon.astro";
       if (entry.intersectionRatio > 0) {
         // entry.target es el elemento que se está observando
         // Agregar la clase para animar
-        entry.target.classList.add("animate_cards2");
+        entry.target.classList.add("slide-in-left");
         // Dejar de observar
         observer.unobserve(entry.target);
       }
     });
   });
   // Observar elemento a animar
-  const element = document.getElementById("anim-article")
+  const element = document.getElementById("anim-article");
   observer.observe(element as HTMLElement);
-  const element2 = document.getElementById("anim-article2")
+
+  const element2 = document.getElementById("anim-article2");
   observer.observe(element2 as HTMLElement);
+
+  const element3 = document.getElementById("anim-article3");
+  observer.observe(element3 as HTMLElement);
+
+  const element4 = document.getElementById("anim-article4");
+  observer.observe(element4 as HTMLElement);
 </script>
